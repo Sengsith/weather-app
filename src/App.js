@@ -12,7 +12,7 @@ function App() {
 
   // API KEY and weather API URL for our API calls
   const API_KEY = process.env.REACT_APP_API_KEY;
-  const weather_url = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}&aqi=no`;
+  const weather_url = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}&aqi=no`;
 
   // Function called when the user inputs a location and hits the enter key
   const getWeather = (e) => {
