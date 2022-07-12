@@ -1,0 +1,41 @@
+{
+  "location": {
+    "name": "Milpitas",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 37.44,
+    "lon": -121.91,
+    "tz_id": "America/Los_Angeles",
+    "localtime_epoch": 1657315785,
+    "localtime": "2022-07-08 14:29"
+  },
+  "current": {
+    "last_updated_epoch": 1657314900,
+    "last_updated": "2022-07-08 14:15",
+    "temp_c": 22.0,
+    "temp_f": 71.6,
+    "is_day": 1,
+    "condition": {
+      "text": "Sunny",
+      "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+      "code": 1000
+    },
+    "wind_mph": 19.2,
+    "wind_kph": 31.0,
+    "wind_degree": 340,
+    "wind_dir": "NNW",
+    "pressure_mb": 1017.0,
+    "pressure_in": 30.03,
+    "precip_mm": 0.0,
+    "precip_in": 0.0,
+    "humidity": 65,
+    "cloud": 0,
+    "feelslike_c": 23.1,
+    "feelslike_f": 73.6,
+    "vis_km": 16.0,
+    "vis_miles": 9.0,
+    "uv": 8.0,
+    "gust_mph": 9.6,
+    "gust_kph": 15.5
+  }
+}
