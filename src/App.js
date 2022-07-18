@@ -15,7 +15,8 @@ function App() {
   const WEATHER_API_KEY = process.env.REACT_APP_API_KEY;
 
   // const weather_url = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${latitude}, ${longitude}&aqi=no`;
-  const weather_url = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${address}&aqi=no`;
+  // const weather_url = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${address}&aqi=no`;
+  const weather_url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${address}&days=3&aqi=no&alerts=no`;
 
   // Function called when user makes a selection
   const handleSelect = async value => {
@@ -37,10 +38,15 @@ function App() {
           <input className="search-bar" {...getInputProps({placeholder: 'Enter a location'})}/>
           <div>
             {loading ? <div>...loading</div> : null}
-
             {suggestions.map(suggestion => {
               const style= {
-                backgroundColor: suggestion.active ? "#41b6e6" : "#7f8c8d"
+                backgroundColor: suggestion.active ? "#41b6e6" : "#7f8c8d",
+                fontSize: "20px",
+                width: "300px",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                paddingLeft: "5px",
+                paddingRight: "15px"
               }
               return (
                 <div {...getSuggestionItemProps(suggestion, { style })}>
@@ -51,28 +57,26 @@ function App() {
         </div>
       )}
       </PlacesAutocomplete>
-      {locationFlag ? 
-          <div className="weather-container">
-            <div className="weather-location">
-              {weather.location ? <p>{weather.location.name}, <br/ >{weather.location.region}</p> : null}
+      <div className="weather-container">
+          <div className="daily-container">
+            <div className="weather-tile" id="location">
+              {weather.location ? <h2>{weather.location.name}, {weather.location.region}</h2> : <h2>Search a location to get the weather!</h2>}
             </div>
-            <div className="weather-temp">
-              {weather.location ? <p>{weather.current.temp_f + '°'}</p> : null}
+            <div className="weather-tile" id="temp">
+              {weather.location ? <h1>{weather.current.temp_f + '°'}</h1> : null}
             </div>
-            <div className="weather-desc">
-              {weather.location ? <p>{weather.current.condition.text}</p> : null}
+            <div className="weather-tile" id="condition">
+              {weather.location ? <img src={weather.current.condition.icon} /> : null}
+              {weather.location ? <h3>{weather.current.condition.text}</h3> : null}
             </div>
-            <div className="weather-wind">
-              {weather.location ? <p>Wind<br />{weather.current.wind_mph + ' MPH ' + weather.current.wind_dir}</p> : null}
+            <div className="weather-tile" id="wind">
+              {weather.location ? <p>Wind: {weather.current.wind_mph + ' MPH ' + weather.current.wind_dir}</p> : null}
             </div>
-            <div className="weather-humidity">
-              {weather.location ? <p>Humidity<br />{weather.current.humidity + '%'}</p> : null}
-            </div>
-            <div className="weather-feels-like">
-              {weather.location ? <p>Feels Like<br />{weather.current.feelslike_f + '°'}</p> : null}
+            <div className="weather-tile" id="humidity">
+              {weather.location ? <p>Humidity: {weather.current.humidity + '%'}</p> : null}
             </div>
           </div>
-        : null}
+      </div>
     </div>
   );
 }
